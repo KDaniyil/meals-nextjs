@@ -3,13 +3,15 @@ import Image from 'next/image';
 
 import classes from './meal-item.module.css';
 import { Meal } from './meals-grid';
+import { S3_PATH } from '@/utils/s3Path';
+
 
 export default function MealItem({ meal }: { meal: Meal }) {
   return (
     <article className={classes.meal}>
       <header>
         <div className={classes.image}>
-          <Image src={meal.image} alt={meal.title} fill />
+          <Image src={`${S3_PATH}${meal.image}`} alt={meal.title} fill />
         </div>
         <div className={classes.headerText}>
           <h2>{meal.title}</h2>
